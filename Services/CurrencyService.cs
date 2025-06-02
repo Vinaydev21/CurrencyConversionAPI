@@ -96,7 +96,8 @@ namespace CurrencyConversion.Services
                     FromCurrency = dto.FromCurrency,
                     FromAmount = dto.Amount,
                     ConvertedAmount = converted,
-                    ConversionDate = DateTime.Now
+                    ConversionDate = DateTime.Now,
+                    FromRate = rate.Rate,
                 };
 
                 await _repo.SaveConversionAsync(conversion);

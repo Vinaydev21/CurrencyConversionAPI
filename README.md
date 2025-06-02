@@ -61,6 +61,7 @@ CREATE TABLE [dbo].[ConversionHistory](
 	[FromAmount] [decimal](18, 2) NULL,
 	[ConvertedAmount] [decimal](18, 2) NULL,
 	[ConversionDate] [datetime] NULL,
+    [FromRate] [decimal](18, 2) NULL,
 	PRIMARY KEY CLUSTERED ([Id])
 );
 
@@ -103,11 +104,12 @@ ALTER PROCEDURE [dbo].[InsertConversionHistory]
     @FromCurrency NVARCHAR(10),
     @FromAmount DECIMAL(18, 2),
     @ConvertedAmount DECIMAL(18, 2),
-    @ConversionDate DATETIME
+    @ConversionDate DATETIME,
+    @FromRate DECIMAL(18,2)
 AS
 BEGIN
-    INSERT INTO ConversionHistory (FromCurrency, FromAmount, ConvertedAmount, ConversionDate)
-    VALUES (@FromCurrency, @FromAmount, @ConvertedAmount, @ConversionDate)
+    INSERT INTO ConversionHistory (FromCurrency, FromAmount, ConvertedAmount, ConversionDate,FromRate)
+    VALUES (@FromCurrency, @FromAmount, @ConvertedAmount, @ConversionDate,@FromRate)
 END
 
 ##GetRateByCurrencyCode
